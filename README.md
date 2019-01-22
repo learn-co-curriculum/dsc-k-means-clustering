@@ -1,16 +1,16 @@
 
-# K-Means Clustering
+# K-means Clustering
 
 ## Introduction
 
-In this lesson, we'll learn about the most popular and widely-used clustering algorithm, K-Means Clustering. 
+In this lesson, we'll learn about the most popular and widely-used clustering algorithm, K-means Clustering. 
 
 ## Objectives
 
 You will be able to:
 
-* Demonstrate an understanding of how the K-Means Clustering algorithm works
-* Perform K-Means Clustering with scikit-learn and interpret the results
+* Demonstrate an understanding of how the K-means Clustering algorithm works
+* Perform K-means Clustering with scikit-learn and interpret the results
 * Use metrics such as Calinski Harabaz Score (Variance Ratios) to determine the optimal value for k
 
 
@@ -31,11 +31,11 @@ When thinking about clustering, is useful to make a distinction between _hierarc
 
 An essential understanding when using clustering methods is that you are basically trying to group data points together without actually knowing what the _actual_ cluster/classes are. This is also the main distinction between clustering and classification (which is a supervised learning method). This is why technically, you also don't know how many clusters you're looking for.
 
-## Non-Hierarchical Clustering With K-Means Clustering
+## Non-Hierarchical Clustering With K-means Clustering
 
-**_K-Means Clustering_** is the most well-known clustering technique, and belongs to the class of non-hierarchical clustering methods. When performing K-Means Clustering, you're essentially trying to find $k$ cluster centers as the mean of the data points that belong to these clusters. One challenging aspect of K-Means is that the number _k_ needs to be decided upon before you start running the algorithm.
+**_K-means Clustering_** is the most well-known clustering technique, and belongs to the class of non-hierarchical clustering methods. When performing K-means Clustering, you're essentially trying to find $k$ cluster centers as the mean of the data points that belong to these clusters. One challenging aspect of K-means is that the number _k_ needs to be decided upon before you start running the algorithm.
 
-The K-Means Clustering algorithm is an iterative algorithm that rearches for a pre-determined number of clusters within an unlabeled dataset, and basically works as follows:
+The K-means Clustering algorithm is an iterative algorithm that rearches for a pre-determined number of clusters within an unlabeled dataset, and basically works as follows:
 
 1. Select k initial seeds
 2. Assign each observation to the clusted to which it is "closest"
@@ -49,16 +49,16 @@ Two assumptions are of main importance for the k means clustering algorithm:
 2. After the cluster center has been recalculated, if a given point is now closer to a different cluster center than the center of its current cluster, then that point is reassigned to the closer center. 
 
 
-## Visualization of K-Means Clustering Algorithm in Action
+## Visualization of K-means Clustering Algorithm in Action
 
 In the animation below, the green dots are the centroids. Notice how they are randomly assigned in the beginning, and shift with each iteration as they are recalculated to match the center of the points assigned to their cluster. The clustering ends when the the centroids find a position in which points are no longer reassigned, meaning that the centroids no longer need to move. 
 
 
 <img src='good-centroid-start.gif'>
 
-## Implementing K-Means Clustering in scikit-learn
+## Implementing K-means Clustering in scikit-learn
 
-Implementing K-Means Clustering with scikit-learn is quite simple, because the API mirrors the same functionality. The same preprocessing steps are required as for supervised learning--null values must be dealt with, and all data must be in numerical format (meaning that non-numerical columns must be dropped or converted to one-hot encoded format). 
+Implementing K-means Clustering with scikit-learn is quite simple, because the API mirrors the same functionality. The same preprocessing steps are required as for supervised learning--null values must be dealt with, and all data must be in numerical format (meaning that non-numerical columns must be dropped or converted to one-hot encoded format). 
 
 ```python
 from sklearn.cluster import KMeans # import from sklearn
@@ -71,7 +71,7 @@ cluster_assignments = k_means.predict(some_df) # Generate cluster index values f
 
 ## Evaluating Cluster Fitness
 
-Running K-Means on a dataset is easy enough, but how do we know if we have the best value for K?  The best bet is to use an accepted metric for evaluating cluster fitness such as [**_Calinski Harabaz Score_**](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.calinski_harabaz_score.html), which is more often referred to by a simpler, **_Variance Ratio_**.
+Running K-means on a dataset is easy enough, but how do we know if we have the best value for K?  The best bet is to use an accepted metric for evaluating cluster fitness such as [**_Calinski Harabaz Score_**](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.calinski_harabaz_score.html), which is more often referred to by a simpler, **_Variance Ratio_**.
 
 ### Computing Variance Ratios
 
@@ -91,7 +91,7 @@ There are other metrics that can also be used to evaluate the fitness, such as [
 
 ### Finding the Optimal Value of K
 
-Now that we have a way to evaluate how well our clusters fit our dataset, we can use this to find the optimal value for K. The best way to do this is to create and fit a different K-Means Clustering object for every value of K that we want to try, and then compare the Variance Ratio scores for each. 
+Now that we have a way to evaluate how well our clusters fit our dataset, we can use this to find the optimal value for K. The best way to do this is to create and fit a different K-means Clustering object for every value of K that we want to try, and then compare the Variance Ratio scores for each. 
 
 We can then visualize the scores using an **_Elbow Plot_**:
 
@@ -116,4 +116,4 @@ In the example above, although k=20 technically scores better than k=4, we choos
 
 ##  Summary
 
-In this lesson, we learned about the different kinds of clustering, and explored how the K-Means Clustering algorithm works. We also learned about how we can quantify the performance of a clustering algorithm using metrics such as Variance Ratios, and how we can use these metrics to find the optimal value for K by creating Elbow Plots!
+In this lesson, we learned about the different kinds of clustering, and explored how the K-means Clustering algorithm works. We also learned about how we can quantify the performance of a clustering algorithm using metrics such as Variance Ratios, and how we can use these metrics to find the optimal value for K by creating Elbow Plots!
