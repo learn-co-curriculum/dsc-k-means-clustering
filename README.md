@@ -27,7 +27,7 @@ When thinking about clustering, is useful to make a distinction between _hierarc
 
 * In cluster analysis, an **_agglomerative hierarchical_** algorithm starts with _n_ clusters (where _n_ is the number of observations, so each observation is a cluster), then combines the two most similar clusters, combines the next two most similar clusters, and so on. A **_divisive_** hierarchical algorithm does the exact opposite, going from 1 to _n_ clusters.
 
-* A **_nonhierarchical_** algorithm chooses _k_ initial clusters and reassigns observations until no improvement can be obtained. How initial clusters and reassignemnts are done depends on the specific type of algorithm.
+* A **_nonhierarchical_** algorithm chooses _k_ initial clusters and reassigns observations until no improvement can be obtained. How initial clusters and reassignments are done depends on the specific type of algorithm.
 
 An essential understanding when using clustering methods is that you are basically trying to group data points together without actually knowing what the _actual_ cluster/classes are. This is also the main distinction between clustering and classification (which is a supervised learning method). This is why technically, you also don't know how many clusters you're looking for.
 
@@ -35,10 +35,10 @@ An essential understanding when using clustering methods is that you are basical
 
 **_K-means Clustering_** is the most well-known clustering technique, and belongs to the class of non-hierarchical clustering methods. When performing K-means Clustering, you're essentially trying to find $k$ cluster centers as the mean of the data points that belong to these clusters. One challenging aspect of K-means is that the number _k_ needs to be decided upon before you start running the algorithm.
 
-The K-means Clustering algorithm is an iterative algorithm that rearches for a pre-determined number of clusters within an unlabeled dataset, and basically works as follows:
+The K-means Clustering algorithm is an iterative algorithm that reaches for a pre-determined number of clusters within an unlabeled dataset, and basically works as follows:
 
 1. Select k initial seeds
-2. Assign each observation to the clusted to which it is "closest"
+2. Assign each observation to the cluster to which it is "closest"
 3. Recompute the cluster centroids
 4. Reassign the observations to one of the clusters according to some rule
 5. Stop if there is no reallocation.
@@ -54,7 +54,7 @@ Two assumptions are of main importance for the k means clustering algorithm:
 In the animation below, the green dots are the centroids. Notice how they are randomly assigned in the beginning, and shift with each iteration as they are recalculated to match the center of the points assigned to their cluster. The clustering ends when the the centroids find a position in which points are no longer reassigned, meaning that the centroids no longer need to move. 
 
 
-<img src='good-centroid-start.gif'>
+<img src='images/good-centroid-start.gif'>
 
 ## Implementing K-means Clustering in scikit-learn
 
@@ -75,9 +75,9 @@ Running K-means on a dataset is easy enough, but how do we know if we have the b
 
 ### Computing Variance Ratios
 
-The _Variance Ratio_ is a ratio of the variance of the points within a cluster, to the variance of a point to points in other clusters. Intuitively, we can understand that we want intra-cluster variance to be low (suggesting that the clusters are tightly knit), and inter-cluster variance to be (suggesting that there is little to no ambiguity about which cluster the points belong to). 
+The _variance Ratio_ is a ratio of the variance of the points within a cluster, to the variance of a point to points in other clusters. Intuitively, we can understand that we want intra-cluster variance to be low (suggesting that the clusters are tightly knit), and inter-cluster variance to be (suggesting that there is little to no ambiguity about which cluster the points belong to). 
 
-We can easily calculate the Variance ratio by importing a function from scikit-learn to calculate it for us, as seen below. To use this metric, we just need to pass in the points themselves, and the labels predicted given to each point by the clustering algorithm. The higher the score, the better the fit.
+We can easily calculate the variance ratio by importing a function from Scikit-learn to calculate it for us, as seen below. To use this metric, we just need to pass in the points themselves, and the labels predicted given to each point by the clustering algorithm. The higher the score, the better the fit.
 
 ```python  
 # This code builds on the previous example
@@ -95,13 +95,13 @@ Now that we have a way to evaluate how well our clusters fit our dataset, we can
 
 We can then visualize the scores using an **_Elbow Plot_**:
 
-<img src='elbow-method.png'>
+<img src='images/elbow-method.png'>
 
-An _Elbow Plot_ is a general term for plots like this, where we can easily see where we hit a point of diminishing returns. In the plot above, we can see that performance peaks at _k=6_, and then begins to drop off. That tells us that our data most likely has 6 naturally occuring clusters in our data. 
+An _Elbow Plot_ is a general term for plots like this, where we can easily see where we hit a point of diminishing returns. In the plot above, we can see that performance peaks at _k=6_, and then begins to drop off. That tells us that our data most likely has 6 naturally occurring clusters in our data. 
 
 Elbow Plots aren't exclusively used with Variance ratios--it's also quite common to calculate something like distortion (another clustering metric), which will result in a graph with a negative as opposed to a postive slope. 
 
-<img src='elbow_2.png'>
+<img src='images/elbow_2.png' width="500">
 
 #### Understanding the Elbow
 
@@ -109,7 +109,7 @@ A note on Elbow Plots: higher scores aren't always better. Higher values of K me
 
 
 
-<img src='dim_returns.png'>
+<img src='images/dim_returns.png' width="500">
 
 In the example above, although k=20 technically scores better than k=4, we choose k=4 because it is the **_Elbow_** on the graph. After the elbow, the metric we're trying to optimize for gets better at a much slower rate. Dealing with 20 clusters, when the fit is only slightly better, isn't worth it--it's better to treat our data as having only 4 clusters, because that is the simplest overall model that provides the most value with the least complexity!
 
