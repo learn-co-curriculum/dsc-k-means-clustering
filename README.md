@@ -95,13 +95,13 @@ Now that we have a way to evaluate how well our clusters fit our dataset, we can
 
 We can then visualize the scores using an **_Elbow Plot_**:
 
-<img src='images/elbow-method.png'>
+<img src='images/new_elbow-method.png' width='500'>
 
 An _Elbow Plot_ is a general term for plots like this, where we can easily see where we hit a point of diminishing returns. In the plot above, we can see that performance peaks at _k=6_, and then begins to drop off. That tells us that our data most likely has 6 naturally occurring clusters in our data. 
 
 Elbow Plots aren't exclusively used with Variance ratios--it's also quite common to calculate something like distortion (another clustering metric), which will result in a graph with a negative as opposed to a postive slope. 
 
-<img src='images/elbow_2.png' width="500">
+<img src='images/new_elbow_2.png' width="500">
 
 #### Understanding the Elbow
 
@@ -109,7 +109,7 @@ A note on Elbow Plots: higher scores aren't always better. Higher values of K me
 
 
 
-<img src='images/dim_returns.png' width="500">
+<img src='images/new_dim_returns.png' width="500">
 
 In the example above, although k=20 technically scores better than k=4, we choose k=4 because it is the **_Elbow_** on the graph. After the elbow, the metric we're trying to optimize for gets better at a much slower rate. Dealing with 20 clusters, when the fit is only slightly better, isn't worth it--it's better to treat our data as having only 4 clusters, because that is the simplest overall model that provides the most value with the least complexity!
 
@@ -117,3 +117,8 @@ In the example above, although k=20 technically scores better than k=4, we choos
 ##  Summary
 
 In this lesson, we learned about the different kinds of clustering, and explored how the K-means Clustering algorithm works. We also learned about how we can quantify the performance of a clustering algorithm using metrics such as Variance Ratios, and how we can use these metrics to find the optimal value for K by creating Elbow Plots!
+
+
+```python
+
+```
