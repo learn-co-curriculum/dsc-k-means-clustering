@@ -75,7 +75,7 @@ Running K-means on a dataset is easy enough, but how do we know if we have the b
 
 ### Computing Variance Ratios
 
-The _variance Ratio_ is a ratio of the variance of the points within a cluster, to the variance of a point to points in other clusters. Intuitively, we can understand that we want intra-cluster variance to be low (suggesting that the clusters are tightly knit), and inter-cluster variance to be (suggesting that there is little to no ambiguity about which cluster the points belong to). 
+The _variance Ratio_ is a ratio of the variance of the points within a cluster, to the variance of a point to points in other clusters. Intuitively, we can understand that we want intra-cluster variance to be low (suggesting that the clusters are tightly knit), and inter-cluster variance to be high(suggesting that there is little to no ambiguity about which cluster the points belong to). 
 
 We can easily calculate the variance ratio by importing a function from Scikit-learn to calculate it for us, as seen below. To use this metric, we just need to pass in the points themselves, and the labels predicted given to each point by the clustering algorithm. The higher the score, the better the fit.
 
@@ -117,8 +117,3 @@ In the example above, although k=20 technically scores better than k=4, we choos
 ##  Summary
 
 In this lesson, we learned about the different kinds of clustering, and explored how the K-means Clustering algorithm works. We also learned about how we can quantify the performance of a clustering algorithm using metrics such as Variance Ratios, and how we can use these metrics to find the optimal value for K by creating Elbow Plots!
-
-
-```python
-
-```
