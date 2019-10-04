@@ -11,7 +11,7 @@ You will be able to:
 
 * Demonstrate an understanding of how the K-means Clustering algorithm works
 * Perform K-means Clustering with scikit-learn and interpret the results
-* Use metrics such as Calinski Harabaz Score (Variance Ratios) to determine the optimal value for k
+* Use metrics such as Calinski Harabasz Score (Variance Ratios) to determine the optimal value for k
 
 
 ## Clustering
@@ -71,20 +71,20 @@ cluster_assignments = k_means.predict(some_df) # Generate cluster index values f
 
 ## Evaluating Cluster Fitness
 
-Running K-means on a dataset is easy enough, but how do we know if we have the best value for K?  The best bet is to use an accepted metric for evaluating cluster fitness such as [**_Calinski Harabaz Score_**](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.calinski_harabaz_score.html), which is more often referred to by a simpler, **_Variance Ratio_**.
+Running K-means on a dataset is easy enough, but how do we know if we have the best value for K?  The best bet is to use an accepted metric for evaluating cluster fitness such as [**_Calinski Harabasz Score_**](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.calinski_harabasz_score.html), which is more often referred to by a simpler, **_Variance Ratio_**.
 
 ### Computing Variance Ratios
 
-The _variance Ratio_ is a ratio of the variance of the points within a cluster, to the variance of a point to points in other clusters. Intuitively, we can understand that we want intra-cluster variance to be low (suggesting that the clusters are tightly knit), and inter-cluster variance to be high(suggesting that there is little to no ambiguity about which cluster the points belong to). 
+The _variance ratio_ is a ratio of the variance of the points within a cluster, to the variance of a point to points in other clusters. Intuitively, we can understand that we want intra-cluster variance to be low (suggesting that the clusters are tightly knit), and inter-cluster variance to be high (suggesting that there is little to no ambiguity about which cluster the points belong to). 
 
 We can easily calculate the variance ratio by importing a function from Scikit-learn to calculate it for us, as seen below. To use this metric, we just need to pass in the points themselves, and the labels predicted given to each point by the clustering algorithm. The higher the score, the better the fit.
 
 ```python  
 # This code builds on the previous example
-from sklearn.metrics import calinski_harabaz_score
+from sklearn.metrics import calinski_harabasz_score
 
 
-print(calinski_harabaz_score(some_df, cluster_assignments))
+print(calinski_harabasz_score(some_df, cluster_assignments))
 # Note that we could also pass in k_means.labels_ instead of cluster_assignments, as they are the same thing
 ```
 There are other metrics that can also be used to evaluate the fitness, such as [Silhouette Score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.silhouette_score.html#sklearn.metrics.silhouette_score). No one metric is best--they all have slightly different strengths and weaknesses depending upon the given dataset and goals. Because of this, it's generally accepted that it's best to pick one metric and stick to it. 
