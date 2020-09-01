@@ -33,11 +33,11 @@ An essential understanding when using clustering methods is that you are basical
 
 ## Non-Hierarchical Clustering With K-Means Clustering
 
-**_K-means clustering_** is the most well-known clustering technique, and it belongs to the class of non-hierarchical clustering methods. When performing k-means clustering, you're essentially trying to find $k$ cluster centers as the mean of the data points that belong to these clusters. One challenging aspect of k-means is that the number _k_ needs to be decided upon before you start running the algorithm.
+**_K-means clustering_** is the most well-known clustering technique, and it belongs to the class of non-hierarchical clustering methods. When performing k-means clustering, you're essentially trying to find  <img src="https://render.githubusercontent.com/render/math?math=k"> cluster centers as the mean of the data points that belong to these clusters. One challenging aspect of k-means is that the number _k_ needs to be decided upon before you start running the algorithm.
 
 The k-means clustering algorithm is an iterative algorithm that reaches for a pre-determined number of clusters within an unlabeled dataset, and basically works as follows:
 
-1. Select $k$ initial seeds 
+1. Select  <img src="https://render.githubusercontent.com/render/math?math=k"> initial seeds 
 2. Assign each observation to the cluster to which it is "closest"
 3. Recompute the cluster centroids
 4. Reassign the observations to one of the clusters according to some rule
@@ -77,7 +77,7 @@ cluster_assignments = k_means.predict(some_df)
 
 ## Evaluating Cluster Fitness
 
-Running K-means on a dataset is easy enough, but how do we know if we have the best value for $k$?  The best bet is to use an accepted metric for evaluating cluster fitness such as [**_Calinski Harabasz Score_**](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.calinski_harabasz_score.html), which is more often referred to by a simpler, **_Variance Ratio_**.
+Running K-means on a dataset is easy enough, but how do we know if we have the best value for  <img src="https://render.githubusercontent.com/render/math?math=k"> ?  The best bet is to use an accepted metric for evaluating cluster fitness such as [**_Calinski Harabasz Score_**](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.calinski_harabasz_score.html), which is more often referred to by a simpler, **_Variance Ratio_**.
 
 ### Computing Variance Ratios
 
@@ -97,7 +97,7 @@ There are other metrics that can also be used to evaluate the fitness, such as [
 
 ### Finding the Optimal Value of K
 
-Now that we have a way to evaluate how well our clusters fit the dataset, we can use this to find the optimal value for $k$. The best way to do this is to create and fit different k-means clustering objects for every value of $k$ that we want to try, and then compare the variance ratio scores for each. 
+Now that we have a way to evaluate how well our clusters fit the dataset, we can use this to find the optimal value for  <img src="https://render.githubusercontent.com/render/math?math=k"> . The best way to do this is to create and fit different k-means clustering objects for every value of  <img src="https://render.githubusercontent.com/render/math?math=k"> that we want to try, and then compare the variance ratio scores for each. 
 
 We can then visualize the scores using an **_Elbow Plot_**:
 
@@ -111,7 +111,7 @@ Elbow plots aren't exclusively used with variance ratios -- it's also quite comm
 
 #### Understanding the Elbow
 
-A note on elbow plots: higher scores aren't always better. Higher values of $k$ mean introducing more overall complexity -- we will sometimes see elbow plots that look like this:
+A note on elbow plots: higher scores aren't always better. Higher values of  <img src="https://render.githubusercontent.com/render/math?math=k"> mean introducing more overall complexity -- we will sometimes see elbow plots that look like this:
 
 
 
@@ -122,4 +122,4 @@ In the example above, although k=20 technically scores better than k=4, we choos
 
 ##  Summary
 
-In this lesson, we learned about different kinds of clustering and explored how the k-means clustering algorithm works. We also learned about how we can quantify the performance of a clustering algorithm using metrics such as variance ratios, and how we can use these metrics to find the optimal value for $k$ by creating elbow plots!
+In this lesson, we learned about different kinds of clustering and explored how the k-means clustering algorithm works. We also learned about how we can quantify the performance of a clustering algorithm using metrics such as variance ratios, and how we can use these metrics to find the optimal value for  <img src="https://render.githubusercontent.com/render/math?math=k"> by creating elbow plots!
