@@ -46,7 +46,7 @@ The k-means clustering algorithm is an iterative algorithm that reaches for a pr
 Two assumptions are of main importance for the k-means clustering algorithm:
 
 1. To compute the "cluster center", you calculate the (arithmetic) mean of all the points belonging to the cluster.  Each cluster center is recalculated in the beginning of each new iteration   
-2. After the cluster center has been recalculated, if a given point is now closer to a different cluster center than the center of its current cluster, then that point is reassigned to the clostest center 
+2. After the cluster center has been recalculated, if a given point is now closer to a different cluster center than the center of its current cluster, then that point is reassigned to the closest center 
 
 
 ## Visualization of K-means Clustering Algorithm
@@ -54,7 +54,7 @@ Two assumptions are of main importance for the k-means clustering algorithm:
 In the animation below, the green dots are the centroids. Notice how they are randomly assigned at the beginning, and shift with each iteration as they are recalculated to match the center of the points assigned to their cluster. The clustering ends when the centroids find a position in which points are no longer reassigned, meaning that the centroids no longer need to move. 
 
 
-<img src='images/good-centroid-start.gif'>
+<img src='https://raw.githubusercontent.com/learn-co-curriculum/dsc-k-means-clustering/master/images/good-centroid-start.gif' alt="k-means clustering animation" >
 
 ## Implementing K-means Clustering in scikit-learn
 
@@ -101,13 +101,13 @@ Now that we have a way to evaluate how well our clusters fit the dataset, we can
 
 We can then visualize the scores using an **_Elbow Plot_**:
 
-<img src='images/new_elbow-method.png' width='500'>
+<img src='https://raw.githubusercontent.com/learn-co-curriculum/dsc-k-means-clustering/master/images/new_elbow-method.png' alt="Calinski Harabaz scores for different values of k" width='500'>
 
 An _elbow plot_ is a general term for plots like this where we can easily see where we hit a point of diminishing returns. In the plot above, we can see that performance peaks at _k=6_, and then begins to drop off. That tells us that our data most likely has 6 naturally occurring clusters in our data. 
 
 Elbow plots aren't exclusively used with variance ratios -- it's also quite common to calculate something like distortion (another clustering metric), which will result in a graph with a negative as opposed to a positive slope. 
 
-<img src='images/new_elbow_2.png' width="500">
+<img src='https://raw.githubusercontent.com/learn-co-curriculum/dsc-k-means-clustering/master/images/new_elbow_2.png' alt="the elbow method showing the optimal k" width="500">
 
 #### Understanding the Elbow
 
@@ -115,7 +115,7 @@ A note on elbow plots: higher scores aren't always better. Higher values of $k$ 
 
 
 
-<img src='images/new_dim_returns.png' width="500">
+<img src='https://raw.githubusercontent.com/learn-co-curriculum/dsc-k-means-clustering/master/images/new_dim_returns.png' alt="plot with the number of clusters on the x-axis and the sum of squared distances to cluster center on the y-axis" width="500">
 
 In the example above, although k=20 technically scores better than k=4, we choose k=4 because it is the **_Elbow_** on the graph. After the elbow, the metric we're trying to optimize for gets better at a much slower rate. Dealing with 20 clusters, when the fit is only slightly better, isn't worth it -- it's better to treat our data as having only 4 clusters, because that is the simplest overall model that provides the most value with the least complexity!
 
